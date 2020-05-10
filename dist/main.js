@@ -97,6 +97,42 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!\n * jQ
 
 /***/ }),
 
+/***/ "./src/appendNum.js":
+/*!**************************!*\
+  !*** ./src/appendNum.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _colRandom_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./colRandom.js */ \"./src/colRandom.js\");\n\r\n\r\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (n,isSu) { \r\n    const span = jquery__WEBPACK_IMPORTED_MODULE_0__(\"<span/>\").text(n);\r\n    if (isSu) { \r\n        const color = Object(_colRandom_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\r\n        span.css(\"color\", color);\r\n        cenColor(n,color)\r\n    }\r\n    jquery__WEBPACK_IMPORTED_MODULE_0__(\"#divContainer\").append(span);\r\n    createCenter(n, isSu);\r\n});\r\n\r\nfunction createCenter(n,isSu) { \r\n    jquery__WEBPACK_IMPORTED_MODULE_0__(\"#divCenter\").text(n);\r\n\r\n}\r\nfunction cenColor(n,color) { \r\n    const div = jquery__WEBPACK_IMPORTED_MODULE_0__(\"<div>\").addClass(\"center\").css(\"color\",color).text(n);\r\n    jquery__WEBPACK_IMPORTED_MODULE_0__(\"body\").append(div);\r\n    getComputedStyle(div[0]).left;\r\n    div.css({\r\n\t\t\ttransform: `translate(${Object(_colRandom_js__WEBPACK_IMPORTED_MODULE_1__[\"getRandom\"])(-200, 200)}px,${Object(_colRandom_js__WEBPACK_IMPORTED_MODULE_1__[\"getRandom\"])(-200,200)}px)`,\r\n\t\t\topacity: 0,\r\n\t\t});   \r\n}\r\n// console.log(ran);\n\n//# sourceURL=webpack:///./src/appendNum.js?");
+
+/***/ }),
+
+/***/ "./src/colRandom.js":
+/*!**************************!*\
+  !*** ./src/colRandom.js ***!
+  \**************************/
+/*! exports provided: getRandom, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getRandom\", function() { return getRandom; });\n\r\nconst colors = [\"#f26395\", \"#62efab\", \"#ef7658\", \"#ffe868\", \"#80e3f7\", \"#d781f9\"];\r\nfunction getRandom(min, max) { \r\n    return Math.floor(Math.random() * (max - min) + min);\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () { \r\n    return colors[getRandom(0, 5)];\r\n});\n\n//# sourceURL=webpack:///./src/colRandom.js?");
+
+/***/ }),
+
+/***/ "./src/event.js":
+/*!**********************!*\
+  !*** ./src/event.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _number_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./number.js */ \"./src/number.js\");\n/* harmony import */ var _appendNum_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./appendNum.js */ \"./src/appendNum.js\");\n\r\n\r\n\r\nlet lock = false;\r\nconst num = new _number_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\nnum.callback = function (n, isSu) {\r\n\t// console.log(n, isSu);\r\n\tObject(_appendNum_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(n, isSu);\r\n};\r\nnum.start();\r\nwindow.onclick = () => { \r\n    if (lock) {\r\n        num.start();\r\n        lock = false;\r\n    } else { \r\n        num.stop();\r\n        lock = true;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/event.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -105,7 +141,7 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!\n * jQ
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _number_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./number.js */ \"./src/number.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\n\r\nconst num = new _number_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\nnum.callback = function(n,isSu){ \r\n    console.log(n, isSu);\r\n    const span = jquery__WEBPACK_IMPORTED_MODULE_1__(\"<span>\").text(n);\r\n    jquery__WEBPACK_IMPORTED_MODULE_1__(\".divContainer\").append(span);\r\n}\r\nnum.start();\r\n// console.log(num.num);\r\nsetTimeout(() => { \r\n    num.stop();\r\n},5000)\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _event_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event.js */ \"./src/event.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
